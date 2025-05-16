@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:weather_app/pages/home/home_screen.dart';
+import 'package:weather_app/utils/Binding/HomeBinding.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(WeatherApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: 'weather app', home: HomePage());
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      getPages: [
+        GetPage(
+          name: '/',
+          page: () => HomeScreen(),
+          binding: HomeBinding(),
+        )
+      ],
+    );
   }
 }
